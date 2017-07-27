@@ -1,0 +1,19 @@
+version: '2'
+services:
+ frontend:
+   image: wordpress:4.5
+   ports:
+     - 80
+   volumes:
+     - /tier2/wordpress:/var/www/html:rw
+   environment:
+     WORDPRESS_DB_HOST: backend:3306
+     WORDPRESS_DB_PASSWORD: abc@123
+   links:
+      - backend
+ backend: 
+   image: mariadb
+   environment:
+     MYSQL_ROOT_PASSWORD: abc@123
+   volumes:
+     - /tier2/database:/var/lib/mysql:rw

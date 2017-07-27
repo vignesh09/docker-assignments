@@ -1,0 +1,12 @@
+version: '3'
+services:
+  first:
+    build: .
+    volumes:
+       - /day4/volume:/usr/share/nginx/html:rw
+  second:
+    image: nginx
+    ports:
+      - 80
+    volumes:
+       - /day4/volume:/usr/share/nginx/html:rw
